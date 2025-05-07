@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Style Market - Product Details</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js"></script>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html" class="logo">Style Market</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="product-details" id="product-details"></div>
+  <script>
+    document.getElementById('cart-count').textContent = getCartCount();
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+    const item = items.find(i => i.id === id);
+    const details = document.getElementById('product-details');
+    if (!item) {
+      details.innerHTML = "<p>Product not found.</p>";
+    } else {
+      details.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <div>
+          <h2>${item.name}</h2>
+          <p>${item.description}</p>
+          <h3>₹${item.price.toFixed(2)}</h3>
+          <button id="add-btn">Add to Cart</button>
+        </div>
+      `;
+      document.getElementById('add-btn').onclick = () => {
+        addToCart(item.id);
+        document.getElementById('cart-count').textContent = getCartCount();
+      };
+    }
+  </script>
+</body>
+</html>
