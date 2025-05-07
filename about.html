@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Style Market - About</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js"></script>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html" class="logo">Style Market</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="about">
+    <h2>About Style Market</h2>
+    <p><strong>Name</strong> Ritesh Raghav</p>
+    <p>
+      Style Market is your go-to destination for the latest in fashion and accessories.
+      We believe in making style accessible, fun, and affordable for everyone.
+    </p>
+    <p>
+      Our team curates the best trends and delivers them straight to your doorstep.
+      Thank you for shopping with us!
+    </p>
+  </div>
+  <script>
+    document.getElementById('cart-count').textContent = getCartCount();
+  </script>
+</body>
+</html>
