@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Style Market - Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js"></script>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html" class="logo">Style Market</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="shop">
+    <h2>Shop All Items</h2>
+    <div class="items-grid" id="items-grid"></div>
+  </div>
+  <script>
+    document.getElementById('cart-count').textContent = getCartCount();
+    const grid = document.getElementById('items-grid');
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'item-card';
+      card.innerHTML = `
+        <a href="product.html?id=${item.id}">
+          <img src="${item.image}" alt="${item.name}">
+          <h4>${item.name}</h4>
+        </a>
+        <p>₹${item.price.toFixed(2)}</p>
+        <button>Add to Cart</button>
+      `;
+      card.querySelector('button').onclick = () => {
+        addToCart(item.id);
+        document.getElementById('cart-count').textContent = getCartCount();
+      };
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>

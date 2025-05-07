@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Style Market - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js"></script>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html" class="logo">Style Market</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="banner enhanced-banner">
+    <div class="banner-content">
+      <h1>Welcome to <span class="highlight">Style Market!</span></h1>
+      <p>Your one-stop shop for <span class="highlight">trendy fashion</span> and accessories.</p>
+      <a href="shop.html" class="shop-btn">Shop Now</a>
+    </div>
+  </div>
+  <div class="features">
+    <div>
+      <img src="https://img.icons8.com/?size=100&id=WJjEICrirGPP&format=png&color=000000" alt="Fashion" style="width:48px;height:48px;">
+      <h3>Latest Trends</h3>
+      <p>Stay ahead with our curated collection.</p>
+    </div>
+    <div>
+      <img src="https://img.icons8.com/color/96/000000/delivery.png" alt="Delivery" style="width:48px;height:48px;">
+      <h3>Fast Delivery</h3>
+      <p>Get your style delivered to your door.</p>
+    </div>
+    <div>
+      <img src="https://img.icons8.com/color/96/000000/return-purchase.png" alt="Returns" style="width:48px;height:48px;">
+      <h3>Easy Returns</h3>
+      <p>Not satisfied? Hassle-free returns.</p>
+    </div>
+  </div>
+  <div class="home-showcase">
+    <h2>Shop Our Bestsellers</h2>
+    <div class="items-grid" id="showcase-grid"></div>
+  </div>
+  <footer>
+    <div class="footer-content">
+      <span>&copy; 2025 Style Market. All rights reserved.</span>
+      <span>Follow us: 
+        <a href="#" class="footer-link">Instagram</a> | 
+        <a href="#" class="footer-link">Facebook</a>
+      </span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('cart-count').textContent = getCartCount();
+    // Showcase 3 random items on home
+    const showcaseGrid = document.getElementById('showcase-grid');
+    if (window.items) {
+      const picks = [...items].sort(() => 0.5 - Math.random()).slice(0, 3);
+      picks.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'item-card';
+        card.innerHTML = `
+          <a href="product.html?id=${item.id}">
+            <img src="${item.image}" alt="${item.name}">
+            <h4>${item.name}</h4>
+          </a>
+          <p>₹${item.price.toFixed(2)}</p>
+          <button>Add to Cart</button>
+        `;
+        card.querySelector('button').onclick = () => {
+          addToCart(item.id);
+          document.getElementById('cart-count').textContent = getCartCount();
+        };
+        showcaseGrid.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>

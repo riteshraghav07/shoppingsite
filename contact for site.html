@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Style Market - Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js"></script>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html" class="logo">Style Market</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@stylemarket.com</p>
+    <p>Phone: +1 234 567 8901</p>
+    <p>Follow us on Instagram: @stylemarket</p>
+  </div>
+  <script>
+    document.getElementById('cart-count').textContent = getCartCount();
+  </script>
+</body>
+</html>
